@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCheck,faPenToSquare,faTrashCan} from '@fortawesome/free-solid-svg-icons';
+import {faPenToSquare,faTrashCan} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import {Card,Button} from 'react-bootstrap'
+import  './Todolist.css';
+
 
 
 
@@ -22,31 +25,42 @@ function Todolist(props) {
           .catch(err => console.log(err))
         }
 
-    return <li key={index}>
-            <div>
-            <FontAwesomeIcon icon={faCheck} className={task.isComplete ? 'iscomplete' : 'checkicon'} />
-            <p className={task.isComplete ? 'taskcomplete' : ''}
-             onClick = {() => {
-              taskComplete(task)}}
-            >{task.todo}</p>
-            </div>
-            <div>
-            <FontAwesomeIcon icon={faPenToSquare}
-              onClick = {() => {
-                props.taskToUpdate(task)
-                props.showPopup()
-              }}
-             />
-            <FontAwesomeIcon icon={faTrashCan}
-            onClick={() => {
-              removeTask(task._id)
-            }}
-             />
-            </div>
-    </li>
+    return ( 
+            <li key={index} className='list-ui'>
+              <div>
+              <Card style={{ width: '18rem' }}  className="text-center">
+                <Card.Body>
+                  <Card.Title>Todo List...</Card.Title>
+                      <Card.Text
+                      className={task.isComplete ? 'taskcomplete' : ''}
+                      onClick = {() => {
+                      taskComplete(task)}}
+                      >
+                      {task.todo}
+                      </Card.Text>
+                      <Card.Body>
+                        <Button variant="primary"
+                          onClick = {() => {
+                            props.taskToUpdate(task)
+                            props.showPopup()
+                          }}
+                        ><FontAwesomeIcon icon={faPenToSquare}className='edit-icon'/>Edit</Button>
+                      
+                        <Button variant="primary"
+                          onClick={() => {
+                            removeTask(task._id)
+                          }}
+                        ><FontAwesomeIcon icon={faTrashCan}className='delete-icon'/>Delete</Button>
+                    </Card.Body>
+                  </Card.Body>
+              </Card>
+              </div>
+            </li>
+      
+    )
   })
   return (
-    <div>
+    <div className='tasklist'>
       <ul>
         {todolist}
       </ul>

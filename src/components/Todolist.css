@@ -1,0 +1,21 @@
+
+
+.tasklist ul{
+  align-items: center !important;
+  list-style: none;
+}
+
+.tasklist ul li {
+    display: inline-block;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 14px;
+    transition: .4s;
+    user-select: none;
+}
+
+
+.tasklist ul li:hover{
+  background-color: #ddd;
+  cursor: pointer;
+}

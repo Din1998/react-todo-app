@@ -1,10 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Todolist from './components/Todolist';
 import Addtask from './components/Addtask';
 import Updatetask from './components/Updatetask';
 import './App.css';
+
 
 function App() {
 
@@ -64,6 +66,7 @@ function App() {
         updateTask = {updateTask}
         removePopup = {() => setShowPopup(!showPopup)}
         />}
+        
     </div>
   );
 }
